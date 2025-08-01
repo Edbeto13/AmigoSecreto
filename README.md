@@ -12,7 +12,7 @@ Una aplicación web sencilla para organizar sorteos de amigo secreto de manera d
 ### Código QR para acceder a la demo
 
 <p align="center">
-  <img src="assets/frame (1).png" alt="Código QR para la demo de Amigo Secreto" width="300"/>
+  <img src="assets/amigo-secreto.png" alt="Código QR para la demo de Amigo Secreto" width="300"/>
 </p>
 
 Escanea este código QR para acceder rápidamente a la demo de la aplicación Amigo Secreto desde tu dispositivo móvil.
@@ -67,6 +67,4 @@ Si tienes ideas o mejoras, abre un issue o haz un pull request.
   [GitHub](https://github.com/Edbeto13)
 
 ---
-
-> _README creado siguiendo las recomendaciones de [Alura](https://www.aluracursos.com/blog/como-escribir-un-readme-increible-en-tu-github)_
 > _README creado siguiendo las recomendaciones de [Alura](https://www.aluracursos.com/blog/como-escribir-un-readme-increible-en-tu-github)_
