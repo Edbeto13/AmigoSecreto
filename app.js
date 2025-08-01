@@ -41,8 +41,8 @@ function mostrarLista() {
 // 4. Función para sortear los amigos
 
 function sortearAmigo() {
-  if (listaAmigos.length === 0) {
-    mostrarResultado("Agregue al menos un amigo antes de sortear.");
+  if (listaAmigos.length < 2) {
+    mostrarResultado("Debe haber al menos 2 amigos para realizar el sorteo.");
     return;
   }
 
