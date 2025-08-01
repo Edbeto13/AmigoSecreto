@@ -4,7 +4,7 @@
 Una aplicación web sencilla para organizar sorteos de amigo secreto de manera divertida y transparente.
 
 <p align="center">
-  <img src="PreviewAmigoSecreto.png" alt="Captura de pantalla de Amigo Secreto" width="700"/>
+  <img src="assets/PreviewAmigoSecreto.png" alt="Captura de pantalla de Amigo Secreto" width="700"/>
 </p>
 
 ## 📸 Demo
