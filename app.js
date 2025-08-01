@@ -2,57 +2,98 @@
 //  Challenge Amigo Secreto
 
 // 1. Crear array para almacenar los nombres
+
 let listaAmigos = [];
 
 // 2. Función para agregar amigos
-function agregarAmigo(nombre) {
-  if (nombre.trim() !== "" && !listaAmigos.includes(nombre)) {
-    listaAmigos.push(nombre.trim());
-    console.log(`${nombre} agregado a la lista.`);
+
+function agregarAmigo() {
+  const input = document.getElementById('amigo');
+  const nombre = input.value.trim();
+  if (nombre !== "" && !listaAmigos.includes(nombre)) {
+    listaAmigos.push(nombre);
+    input.value = "";
+    mostrarLista();
+    mostrarResultado("");
   } else {
-    console.log(`Nombre inválido o duplicado.`);
+    mostrarResultado('Nombre inválido o duplicado.');
   }
 }
 
 // 3. Función para actualizar (mostrar) la lista
+
 function mostrarLista() {
+  const ul = document.getElementById('listaAmigos');
+  ul.innerHTML = "";
   if (listaAmigos.length === 0) {
-    console.log("La lista de amigos está vacía.");
+    const li = document.createElement('li');
+    li.textContent = "La lista de amigos está vacía.";
+    ul.appendChild(li);
   } else {
-    console.log("Lista actual de amigos:");
     listaAmigos.forEach((amigo, index) => {
-      console.log(`${index + 1}. ${amigo}`);
+      const li = document.createElement('li');
+      li.textContent = `${index + 1}. ${amigo}`;
+      ul.appendChild(li);
     });
   }
 }
 
 // 4. Función para sortear los amigos
-function sortearAmigos() {
+
+function sortearAmigo() {
   if (listaAmigos.length < 2) {
-    console.log("Debe haber al menos 2 amigos para hacer el sorteo.");
+    mostrarResultado("Debe haber al menos 2 amigos para hacer el sorteo.");
     return;
   }
 
-  let participantes = [...listaAmigos];
-  let sorteados = [];
+  let intentos = 0;
+  let maxIntentos = 100;
+  let sorteados = null;
 
-  // Empezamos el sorteo evitando que alguien se asigne a sí mismo
-  for (let i = 0; i < listaAmigos.length; i++) {
-    let opciones = participantes.filter((nombre) => nombre !== listaAmigos[i]);
-    
-    if (opciones.length === 0) {
-      // Si quedan solo emparejamientos inválidos, reiniciamos
-      console.log("Sorteo fallido. Reintentando...");
-      return sortearAmigos();
+  while (intentos < maxIntentos && !sorteados) {
+    let participantes = [...listaAmigos];
+    let resultado = [];
+    let valido = true;
+    for (let i = 0; i < listaAmigos.length; i++) {
+      let opciones = participantes.filter((nombre) => nombre !== listaAmigos[i]);
+      if (opciones.length === 0) {
+        valido = false;
+        break;
+      }
+      let elegido = opciones[Math.floor(Math.random() * opciones.length)];
+      resultado.push({ de: listaAmigos[i], para: elegido });
+      participantes.splice(participantes.indexOf(elegido), 1);
     }
-
-    let elegido = opciones[Math.floor(Math.random() * opciones.length)];
-    sorteados.push({ de: listaAmigos[i], para: elegido });
-    participantes.splice(participantes.indexOf(elegido), 1);
+    if (valido) {
+      sorteados = resultado;
+    }
+    intentos++;
   }
 
-  console.log("Resultados del sorteo:");
-  sorteados.forEach((par, index) => {
-    console.log(`${index + 1}. ${par.de} → ${par.para}`);
-  });
+  if (!sorteados) {
+    mostrarResultado("No se pudo realizar un sorteo válido. Intente de nuevo.");
+    return;
+  }
+
+  mostrarResultado("Resultados del sorteo:", sorteados);
 }
+
+function mostrarResultado(mensaje, pares) {
+  const ul = document.getElementById('resultado');
+  ul.innerHTML = "";
+  if (mensaje) {
+    const li = document.createElement('li');
+    li.textContent = mensaje;
+    ul.appendChild(li);
+  }
+  if (pares && Array.isArray(pares)) {
+    pares.forEach((par, index) => {
+      const li = document.createElement('li');
+      li.textContent = `${index + 1}. ${par.de} → ${par.para}`;
+      ul.appendChild(li);
+    });
+  }
+}
+
+// Inicializar lista al cargar
+window.onload = mostrarLista;
