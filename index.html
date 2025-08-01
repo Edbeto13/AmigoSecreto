@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Metadatos básicos: definen el conjunto de caracteres y la configuración de visualización -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Enlace al archivo de estilos CSS -->
     <link rel="stylesheet" href="style.css">
+    <!-- Enlaces para cargar fuentes de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700;900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
@@ -11,32 +14,45 @@
 </head>
 
 <body>
+    <!-- Contenedor principal de la aplicación -->
     <main class="main-content">
+        <!-- Encabezado con título e imagen de la aplicación -->
         <header class="header-banner">
             <h1 class="main-title">Amigo Secreto</h1>
             <img src="assets/amigo-secreto.png" alt="Imagen representativa de amigo secreto">
         </header>
         
+        <!-- Sección para entrada de datos y gestión del juego -->
         <section class="input-section">
             <h2 class="section-title">Digite el nombre de sus amigos</h2>
+            <!-- Formulario para añadir nombres -->
             <div class="input-wrapper">
+                <!-- Campo para escribir el nombre del amigo -->
                 <input type="text" id="amigo" class="input-name" placeholder="Escribe un nombre">
+                <!-- Botón que activa la función agregarAmigo() cuando se hace clic -->
                 <button class="button-add" onclick="agregarAmigo()">Añadir</button>
             </div>
            
+            <!-- Lista que mostrará los nombres agregados -->
             <ul id="listaAmigos" class="name-list" aria-labelledby="listaAmigos" role="list"></ul>
+            <!-- Lista que mostrará los resultados del sorteo -->
             <ul id="resultado" class="result-list" aria-live="polite"></ul>
 
+            <!-- Contenedor de botones para las acciones principales -->
             <div class="button-container">
+                <!-- Botón para iniciar el sorteo de amigos secretos -->
                 <button class="button-draw" onclick="sortearAmigo()" aria-label="Sortear amigo secreto">
                     <img src="assets/play_circle_outline.png" alt="Ícono para sortear">
                     Sortear amigo
                 </button>
+                <!-- Botón para reiniciar el juego, limpiando todas las listas -->
                 <button class="button-restart" onclick="reiniciarJuego()">Reiniciar</button>
             </div>
         </section>
     </main>
 
+    <!-- Enlace al archivo JavaScript que contiene la lógica de la aplicación -->
+    <!-- El atributo "defer" hace que el script se ejecute después de cargar todo el HTML -->
     <script src="app.js" defer></script>
 </body>
 </html>
