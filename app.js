@@ -41,57 +41,23 @@ function mostrarLista() {
 // 4. Función para sortear los amigos
 
 function sortearAmigo() {
-  if (listaAmigos.length < 2) {
-    mostrarResultado("Debe haber al menos 2 amigos para hacer el sorteo.");
+  if (listaAmigos.length === 0) {
+    mostrarResultado("Agregue al menos un amigo antes de sortear.");
     return;
   }
 
-  let intentos = 0;
-  let maxIntentos = 100;
-  let sorteados = null;
-
-  while (intentos < maxIntentos && !sorteados) {
-    let participantes = [...listaAmigos];
-    let resultado = [];
-    let valido = true;
-    for (let i = 0; i < listaAmigos.length; i++) {
-      let opciones = participantes.filter((nombre) => nombre !== listaAmigos[i]);
-      if (opciones.length === 0) {
-        valido = false;
-        break;
-      }
-      let elegido = opciones[Math.floor(Math.random() * opciones.length)];
-      resultado.push({ de: listaAmigos[i], para: elegido });
-      participantes.splice(participantes.indexOf(elegido), 1);
-    }
-    if (valido) {
-      sorteados = resultado;
-    }
-    intentos++;
-  }
-
-  if (!sorteados) {
-    mostrarResultado("No se pudo realizar un sorteo válido. Intente de nuevo.");
-    return;
-  }
-
-  mostrarResultado("Resultados del sorteo:", sorteados);
+  const indiceGanador = Math.floor(Math.random() * listaAmigos.length);
+  const ganador = listaAmigos[indiceGanador];
+  mostrarResultado(`Amigo ganador del sorteo: ${ganador}`);
 }
 
-function mostrarResultado(mensaje, pares) {
+function mostrarResultado(mensaje) {
   const ul = document.getElementById('resultado');
   ul.innerHTML = "";
   if (mensaje) {
     const li = document.createElement('li');
     li.textContent = mensaje;
     ul.appendChild(li);
-  }
-  if (pares && Array.isArray(pares)) {
-    pares.forEach((par, index) => {
-      const li = document.createElement('li');
-      li.textContent = `${index + 1}. ${par.de} → ${par.para}`;
-      ul.appendChild(li);
-    });
   }
 }
 
