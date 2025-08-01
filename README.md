@@ -12,7 +12,7 @@ Una aplicación web sencilla para organizar sorteos de amigo secreto de manera d
 ### Código QR para acceder a la demo
 
 <p align="center">
-  <img src="assets/amigo-secreto.png" alt="Código QR para la demo de Amigo Secreto" width="300"/>
+  <img src="assets/frame (1).png" alt="Código QR para la demo de Amigo Secreto" width="300"/>
 </p>
 
 Escanea este código QR para acceder rápidamente a la demo de la aplicación Amigo Secreto desde tu dispositivo móvil.
