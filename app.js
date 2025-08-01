@@ -95,5 +95,11 @@ function mostrarResultado(mensaje, pares) {
   }
 }
 
+function reiniciarJuego() {
+    listaAmigos = [];
+    mostrarLista();
+    mostrarResultado("");
+}
+
 // Inicializar lista al cargar
 window.onload = mostrarLista;
